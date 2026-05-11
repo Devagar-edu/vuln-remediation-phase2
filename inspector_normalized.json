@@ -1,0 +1,588 @@
+{
+  "scan_metadata": {
+    "scanner": "inspector",
+    "project": "vuln-remediation-phase2",
+    "repository": "Devagar-edu/vuln-remediation-phase2",
+    "branch": "main",
+    "commit": "061d702c5edd104684d1ba834d2d6900c0585c4c",
+    "scan_time": "2026-05-11T22:26:15.445599",
+    "findings_count": 14
+  },
+  "dependency_vulnerabilities": [
+    {
+      "id": "arn:aws:inspector2:us-east-1:123456789012:finding/cve202524970-001",
+      "scanner": "inspector",
+      "package_manager": "java",
+      "package_name": "io.netty:netty-handler",
+      "current_version": "4.1.115.Final",
+      "fixed_version": "4.1.118.Final",
+      "severity": "critical",
+      "cve": [
+        "CVE-2025-24970"
+      ],
+      "manifest_file": "pom.xml",
+      "remediation_type": "dependency",
+      "repository": "vulnerable-demo",
+      "branch": "main",
+      "commit_id": "unknown",
+      "scan_time": "2026-05-11T22:26:15.427934",
+      "metadata": {
+        "inspector_finding_arn": "arn:aws:inspector2:us-east-1:123456789012:finding/cve202524970-001",
+        "inspector_title": "CVE-2025-24970 - io.netty:netty-handler",
+        "inspector_description": "Netty, an asynchronous event-driven network application framework, has a vulnerability where specially crafted packets received via SslHandler can cause improper validation leading to native crashes. This affects the stability and availability of applications using the vulnerable Netty version.",
+        "inspector_first_observed": "2026-05-08T10:30:00.000Z",
+        "inspector_last_observed": "2026-05-08T10:30:00.000Z",
+        "inspector_exploit_available": "NO",
+        "inspector_fix_available": "YES",
+        "inspector_epss_score": 0.00234,
+        "inspector_cvss": [
+          {
+            "baseScore": 9.1,
+            "scoringVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+            "source": "NVD",
+            "version": "3.1"
+          }
+        ],
+        "inspector_reference_urls": [
+          "https://nvd.nist.gov/vuln/detail/CVE-2025-24970",
+          "https://github.com/netty/netty/security/advisories"
+        ],
+        "inspector_file_path": "/app/vulnerable-demo-1.0.0.jar/BOOT-INF/lib/netty-handler-4.1.115.Final.jar"
+      }
+    },
+    {
+      "id": "arn:aws:inspector2:us-east-1:123456789012:finding/cve202447535-002",
+      "scanner": "inspector",
+      "package_manager": "java",
+      "package_name": "io.netty:netty-handler",
+      "current_version": "4.1.115.Final",
+      "fixed_version": "4.1.116.Final",
+      "severity": "medium",
+      "cve": [
+        "CVE-2024-47535"
+      ],
+      "manifest_file": "pom.xml",
+      "remediation_type": "dependency",
+      "repository": "vulnerable-demo",
+      "branch": "main",
+      "commit_id": "unknown",
+      "scan_time": "2026-05-11T22:26:15.427977",
+      "metadata": {
+        "inspector_finding_arn": "arn:aws:inspector2:us-east-1:123456789012:finding/cve202447535-002",
+        "inspector_title": "CVE-2024-47535 - io.netty:netty-handler",
+        "inspector_description": "An unsafe reading of environment files could potentially cause denial of service in Netty. When loaded on a Windows application, Netty attempts to load a file that does not exist. If an attacker creates a sufficiently large file, the Netty application crashes.",
+        "inspector_first_observed": "2026-05-08T10:30:00.000Z",
+        "inspector_last_observed": "2026-05-08T10:30:00.000Z",
+        "inspector_exploit_available": "NO",
+        "inspector_fix_available": "YES",
+        "inspector_epss_score": 0.00043,
+        "inspector_cvss": [
+          {
+            "baseScore": 5.3,
+            "scoringVector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+            "source": "NVD",
+            "version": "3.1"
+          }
+        ],
+        "inspector_reference_urls": [
+          "https://nvd.nist.gov/vuln/detail/CVE-2024-47535",
+          "https://netty.io/news/2024/11/12/4-1-115-Final.html"
+        ],
+        "inspector_file_path": "/app/vulnerable-demo-1.0.0.jar/BOOT-INF/lib/netty-handler-4.1.115.Final.jar"
+      }
+    },
+    {
+      "id": "arn:aws:inspector2:us-east-1:123456789012:finding/cve202334462-003",
+      "scanner": "inspector",
+      "package_manager": "java",
+      "package_name": "io.netty:netty-handler",
+      "current_version": "4.1.115.Final",
+      "fixed_version": "4.1.94.Final",
+      "severity": "high",
+      "cve": [
+        "CVE-2023-34462"
+      ],
+      "manifest_file": "pom.xml",
+      "remediation_type": "dependency",
+      "repository": "vulnerable-demo",
+      "branch": "main",
+      "commit_id": "unknown",
+      "scan_time": "2026-05-11T22:26:15.428029",
+      "metadata": {
+        "inspector_finding_arn": "arn:aws:inspector2:us-east-1:123456789012:finding/cve202334462-003",
+        "inspector_title": "CVE-2023-34462 - io.netty:netty-handler",
+        "inspector_description": "The SniHandler in Netty can allocate up to 16MB of heap memory for each channel during TLS handshake. When the handler or channel lacks an idle timeout, this can be exploited to cause memory exhaustion in TCP servers using SniHandler.",
+        "inspector_first_observed": "2026-05-08T10:30:00.000Z",
+        "inspector_last_observed": "2026-05-08T10:30:00.000Z",
+        "inspector_exploit_available": "NO",
+        "inspector_fix_available": "YES",
+        "inspector_epss_score": 0.00156,
+        "inspector_cvss": [
+          {
+            "baseScore": 7.5,
+            "scoringVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+            "source": "NVD",
+            "version": "3.1"
+          }
+        ],
+        "inspector_reference_urls": [
+          "https://github.com/advisories/GHSA-6mjq-h674-j845",
+          "https://nvd.nist.gov/vuln/detail/CVE-2023-34462"
+        ],
+        "inspector_file_path": "/app/vulnerable-demo-1.0.0.jar/BOOT-INF/lib/netty-handler-4.1.115.Final.jar"
+      }
+    },
+    {
+      "id": "arn:aws:inspector2:us-east-1:123456789012:finding/cve202622735-004",
+      "scanner": "inspector",
+      "package_manager": "java",
+      "package_name": "org.springframework:spring-webmvc",
+      "current_version": "5.3.31",
+      "fixed_version": "5.3.47",
+      "severity": "high",
+      "cve": [
+        "CVE-2026-22735"
+      ],
+      "manifest_file": "pom.xml",
+      "remediation_type": "dependency",
+      "repository": "vulnerable-demo",
+      "branch": "main",
+      "commit_id": "unknown",
+      "scan_time": "2026-05-11T22:26:15.428052",
+      "metadata": {
+        "inspector_finding_arn": "arn:aws:inspector2:us-east-1:123456789012:finding/cve202622735-004",
+        "inspector_title": "CVE-2026-22735 - org.springframework:spring-webmvc",
+        "inspector_description": "Spring MVC and WebFlux applications are vulnerable to stream corruption when using Server-Sent Events (SSE). This can lead to data integrity issues and potential information disclosure in applications utilizing SSE for real-time updates.",
+        "inspector_first_observed": "2026-05-08T10:30:00.000Z",
+        "inspector_last_observed": "2026-05-08T10:30:00.000Z",
+        "inspector_exploit_available": "NO",
+        "inspector_fix_available": "YES",
+        "inspector_epss_score": 0.00089,
+        "inspector_cvss": [
+          {
+            "baseScore": 7.4,
+            "scoringVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L",
+            "source": "NVD",
+            "version": "3.1"
+          }
+        ],
+        "inspector_reference_urls": [
+          "https://advisories.gitlab.com/maven/org.springframework/spring-webmvc/CVE-2026-22735/",
+          "https://spring.io/security/"
+        ],
+        "inspector_file_path": "/app/vulnerable-demo-1.0.0.jar/BOOT-INF/lib/spring-webmvc-5.3.31.jar"
+      }
+    },
+    {
+      "id": "arn:aws:inspector2:us-east-1:123456789012:finding/cve202622737-005",
+      "scanner": "inspector",
+      "package_manager": "java",
+      "package_name": "org.springframework:spring-webmvc",
+      "current_version": "5.3.31",
+      "fixed_version": "5.3.47",
+      "severity": "medium",
+      "cve": [
+        "CVE-2026-22737"
+      ],
+      "manifest_file": "pom.xml",
+      "remediation_type": "dependency",
+      "repository": "vulnerable-demo",
+      "branch": "main",
+      "commit_id": "unknown",
+      "scan_time": "2026-05-11T22:26:15.428075",
+      "metadata": {
+        "inspector_finding_arn": "arn:aws:inspector2:us-east-1:123456789012:finding/cve202622737-005",
+        "inspector_title": "CVE-2026-22737 - org.springframework:spring-webmvc",
+        "inspector_description": "Use of Java scripting engine-enabled template views (e.g., JRuby, Jython) in Spring MVC and WebFlux applications can result in disclosure of content from files outside the configured locations for script template views. This represents an information disclosure vulnerability.",
+        "inspector_first_observed": "2026-05-08T10:30:00.000Z",
+        "inspector_last_observed": "2026-05-08T10:30:00.000Z",
+        "inspector_exploit_available": "NO",
+        "inspector_fix_available": "YES",
+        "inspector_epss_score": 0.00067,
+        "inspector_cvss": [
+          {
+            "baseScore": 5.9,
+            "scoringVector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N",
+            "source": "NVD",
+            "version": "3.1"
+          }
+        ],
+        "inspector_reference_urls": [
+          "https://advisories.gitlab.com/maven/org.springframework/spring-webmvc/CVE-2026-22737/",
+          "https://www.sentinelone.com/vulnerability-database/cve-2026-22737/"
+        ],
+        "inspector_file_path": "/app/vulnerable-demo-1.0.0.jar/BOOT-INF/lib/spring-webmvc-5.3.31.jar"
+      }
+    },
+    {
+      "id": "arn:aws:inspector2:us-east-1:123456789012:finding/cve202541242-006",
+      "scanner": "inspector",
+      "package_manager": "java",
+      "package_name": "org.springframework:spring-webmvc",
+      "current_version": "5.3.31",
+      "fixed_version": "5.3.47",
+      "severity": "medium",
+      "cve": [
+        "CVE-2025-41242"
+      ],
+      "manifest_file": "pom.xml",
+      "remediation_type": "dependency",
+      "repository": "vulnerable-demo",
+      "branch": "main",
+      "commit_id": "unknown",
+      "scan_time": "2026-05-11T22:26:15.428088",
+      "metadata": {
+        "inspector_finding_arn": "arn:aws:inspector2:us-east-1:123456789012:finding/cve202541242-006",
+        "inspector_title": "CVE-2025-41242 - org.springframework:spring-webmvc",
+        "inspector_description": "Spring Framework MVC applications can be vulnerable to path traversal attacks when deployed on non-compliant Servlet containers. Attackers may be able to access files outside the intended directory structure.",
+        "inspector_first_observed": "2026-05-08T10:30:00.000Z",
+        "inspector_last_observed": "2026-05-08T10:30:00.000Z",
+        "inspector_exploit_available": "NO",
+        "inspector_fix_available": "YES",
+        "inspector_epss_score": 0.00045,
+        "inspector_cvss": [
+          {
+            "baseScore": 5.9,
+            "scoringVector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N",
+            "source": "NVD",
+            "version": "3.1"
+          }
+        ],
+        "inspector_reference_urls": [
+          "https://advisories.gitlab.com/maven/org.springframework/spring-webmvc/CVE-2025-41242/",
+          "https://spring.io/security/"
+        ],
+        "inspector_file_path": "/app/vulnerable-demo-1.0.0.jar/BOOT-INF/lib/spring-webmvc-5.3.31.jar"
+      }
+    },
+    {
+      "id": "arn:aws:inspector2:us-east-1:123456789012:finding/cve202438816-007",
+      "scanner": "inspector",
+      "package_manager": "java",
+      "package_name": "org.springframework:spring-webmvc",
+      "current_version": "5.3.31",
+      "fixed_version": "5.3.40",
+      "severity": "high",
+      "cve": [
+        "CVE-2024-38816"
+      ],
+      "manifest_file": "pom.xml",
+      "remediation_type": "dependency",
+      "repository": "vulnerable-demo",
+      "branch": "main",
+      "commit_id": "unknown",
+      "scan_time": "2026-05-11T22:26:15.428100",
+      "metadata": {
+        "inspector_finding_arn": "arn:aws:inspector2:us-east-1:123456789012:finding/cve202438816-007",
+        "inspector_title": "CVE-2024-38816 - org.springframework:spring-webmvc",
+        "inspector_description": "Spring functional web frameworks are vulnerable to path traversal attacks. Attackers can craft malicious HTTP requests to obtain any file on the filesystem that is accessible to the process running the Spring application.",
+        "inspector_first_observed": "2026-05-08T10:30:00.000Z",
+        "inspector_last_observed": "2026-05-08T10:30:00.000Z",
+        "inspector_exploit_available": "YES",
+        "inspector_fix_available": "YES",
+        "inspector_epss_score": 0.02134,
+        "inspector_cvss": [
+          {
+            "baseScore": 7.5,
+            "scoringVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+            "source": "NVD",
+            "version": "3.1"
+          }
+        ],
+        "inspector_reference_urls": [
+          "https://advisories.gitlab.com/maven/org.springframework/spring-webmvc/CVE-2024-38816/",
+          "https://spring.io/security/"
+        ],
+        "inspector_file_path": "/app/vulnerable-demo-1.0.0.jar/BOOT-INF/lib/spring-webmvc-5.3.31.jar"
+      }
+    },
+    {
+      "id": "arn:aws:inspector2:us-east-1:123456789012:finding/cve202438828-008",
+      "scanner": "inspector",
+      "package_manager": "java",
+      "package_name": "org.springframework:spring-webmvc",
+      "current_version": "5.3.31",
+      "fixed_version": "5.3.42",
+      "severity": "high",
+      "cve": [
+        "CVE-2024-38828"
+      ],
+      "manifest_file": "pom.xml",
+      "remediation_type": "dependency",
+      "repository": "vulnerable-demo",
+      "branch": "main",
+      "commit_id": "unknown",
+      "scan_time": "2026-05-11T22:26:15.428115",
+      "metadata": {
+        "inspector_finding_arn": "arn:aws:inspector2:us-east-1:123456789012:finding/cve202438828-008",
+        "inspector_title": "CVE-2024-38828 - org.springframework:spring-webmvc",
+        "inspector_description": "Spring MVC controller methods with @RequestBody byte[] parameters are vulnerable to Denial of Service attacks. Attackers can send specially crafted requests to exhaust server resources.",
+        "inspector_first_observed": "2026-05-08T10:30:00.000Z",
+        "inspector_last_observed": "2026-05-08T10:30:00.000Z",
+        "inspector_exploit_available": "NO",
+        "inspector_fix_available": "YES",
+        "inspector_epss_score": 0.00234,
+        "inspector_cvss": [
+          {
+            "baseScore": 7.5,
+            "scoringVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+            "source": "NVD",
+            "version": "3.1"
+          }
+        ],
+        "inspector_reference_urls": [
+          "https://advisories.gitlab.com/maven/org.springframework/spring-webmvc/CVE-2024-38828/",
+          "https://spring.io/security/"
+        ],
+        "inspector_file_path": "/app/vulnerable-demo-1.0.0.jar/BOOT-INF/lib/spring-webmvc-5.3.31.jar"
+      }
+    },
+    {
+      "id": "arn:aws:inspector2:us-east-1:123456789012:finding/cve202634500-009",
+      "scanner": "inspector",
+      "package_manager": "java",
+      "package_name": "org.apache.tomcat.embed:tomcat-embed-core",
+      "current_version": "9.0.116",
+      "fixed_version": "9.0.117",
+      "severity": "critical",
+      "cve": [
+        "CVE-2026-34500"
+      ],
+      "manifest_file": "pom.xml",
+      "remediation_type": "dependency",
+      "repository": "vulnerable-demo",
+      "branch": "main",
+      "commit_id": "unknown",
+      "scan_time": "2026-05-11T22:26:15.428126",
+      "metadata": {
+        "inspector_finding_arn": "arn:aws:inspector2:us-east-1:123456789012:finding/cve202634500-009",
+        "inspector_title": "CVE-2026-34500 - org.apache.tomcat.embed:tomcat-embed-core",
+        "inspector_description": "A critical vulnerability exists in Apache Tomcat affecting versions 9.0.92 through 9.0.116. This vulnerability can lead to remote code execution or significant security compromise of the application server.",
+        "inspector_first_observed": "2026-05-08T10:30:00.000Z",
+        "inspector_last_observed": "2026-05-08T10:30:00.000Z",
+        "inspector_exploit_available": "NO",
+        "inspector_fix_available": "YES",
+        "inspector_epss_score": 0.00456,
+        "inspector_cvss": [
+          {
+            "baseScore": 9.8,
+            "scoringVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+            "source": "NVD",
+            "version": "3.1"
+          }
+        ],
+        "inspector_reference_urls": [
+          "https://nvd.nist.gov/vuln/detail/CVE-2026-34500",
+          "https://tomcat.apache.org/security-9.html"
+        ],
+        "inspector_file_path": "/app/vulnerable-demo-1.0.0.jar/BOOT-INF/lib/tomcat-embed-core-9.0.116.jar"
+      }
+    },
+    {
+      "id": "arn:aws:inspector2:us-east-1:123456789012:finding/cve202634483-010",
+      "scanner": "inspector",
+      "package_manager": "java",
+      "package_name": "org.apache.tomcat.embed:tomcat-embed-core",
+      "current_version": "9.0.116",
+      "fixed_version": "9.0.117",
+      "severity": "medium",
+      "cve": [
+        "CVE-2026-34483"
+      ],
+      "manifest_file": "pom.xml",
+      "remediation_type": "dependency",
+      "repository": "vulnerable-demo",
+      "branch": "main",
+      "commit_id": "unknown",
+      "scan_time": "2026-05-11T22:26:15.428136",
+      "metadata": {
+        "inspector_finding_arn": "arn:aws:inspector2:us-east-1:123456789012:finding/cve202634483-010",
+        "inspector_title": "CVE-2026-34483 - org.apache.tomcat.embed:tomcat-embed-core",
+        "inspector_description": "Improper encoding or escaping of output vulnerability in the JsonAccessLogValve component of Apache Tomcat. This can lead to log injection attacks and potential information disclosure.",
+        "inspector_first_observed": "2026-05-08T10:30:00.000Z",
+        "inspector_last_observed": "2026-05-08T10:30:00.000Z",
+        "inspector_exploit_available": "NO",
+        "inspector_fix_available": "YES",
+        "inspector_epss_score": 0.00078,
+        "inspector_cvss": [
+          {
+            "baseScore": 6.1,
+            "scoringVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+            "source": "NVD",
+            "version": "3.1"
+          }
+        ],
+        "inspector_reference_urls": [
+          "https://advisories.gitlab.com/maven/org.apache.tomcat/tomcat/CVE-2026-34483/",
+          "https://tomcat.apache.org/security-9.html"
+        ],
+        "inspector_file_path": "/app/vulnerable-demo-1.0.0.jar/BOOT-INF/lib/tomcat-embed-core-9.0.116.jar"
+      }
+    },
+    {
+      "id": "arn:aws:inspector2:us-east-1:123456789012:finding/cve202625854-011",
+      "scanner": "inspector",
+      "package_manager": "java",
+      "package_name": "org.apache.tomcat.embed:tomcat-embed-core",
+      "current_version": "9.0.116",
+      "fixed_version": "9.0.116",
+      "severity": "high",
+      "cve": [
+        "CVE-2026-25854"
+      ],
+      "manifest_file": "pom.xml",
+      "remediation_type": "dependency",
+      "repository": "vulnerable-demo",
+      "branch": "main",
+      "commit_id": "unknown",
+      "scan_time": "2026-05-11T22:26:15.428146",
+      "metadata": {
+        "inspector_finding_arn": "arn:aws:inspector2:us-east-1:123456789012:finding/cve202625854-011",
+        "inspector_title": "CVE-2026-25854 - org.apache.tomcat.embed:tomcat-embed-core",
+        "inspector_description": "Apache Tomcat contains an open redirect vulnerability affecting versions 9.0.0.M23 through 9.0.115. Attackers can craft malicious URLs to redirect users to untrusted sites, potentially facilitating phishing attacks.",
+        "inspector_first_observed": "2026-05-08T10:30:00.000Z",
+        "inspector_last_observed": "2026-05-08T10:30:00.000Z",
+        "inspector_exploit_available": "NO",
+        "inspector_fix_available": "YES",
+        "inspector_epss_score": 0.00123,
+        "inspector_cvss": [
+          {
+            "baseScore": 7.4,
+            "scoringVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:N/I:H/A:N",
+            "source": "NVD",
+            "version": "3.1"
+          }
+        ],
+        "inspector_reference_urls": [
+          "https://advisories.gitlab.com/maven/org.apache.tomcat/tomcat-catalina/CVE-2026-25854/",
+          "https://tomcat.apache.org/security-9.html"
+        ],
+        "inspector_file_path": "/app/vulnerable-demo-1.0.0.jar/BOOT-INF/lib/tomcat-embed-core-9.0.116.jar"
+      }
+    },
+    {
+      "id": "arn:aws:inspector2:us-east-1:123456789012:finding/cve202624880-012",
+      "scanner": "inspector",
+      "package_manager": "java",
+      "package_name": "org.apache.tomcat.embed:tomcat-embed-core",
+      "current_version": "9.0.116",
+      "fixed_version": "9.0.116",
+      "severity": "critical",
+      "cve": [
+        "CVE-2026-24880"
+      ],
+      "manifest_file": "pom.xml",
+      "remediation_type": "dependency",
+      "repository": "vulnerable-demo",
+      "branch": "main",
+      "commit_id": "unknown",
+      "scan_time": "2026-05-11T22:26:15.428156",
+      "metadata": {
+        "inspector_finding_arn": "arn:aws:inspector2:us-east-1:123456789012:finding/cve202624880-012",
+        "inspector_title": "CVE-2026-24880 - org.apache.tomcat.embed:tomcat-embed-core",
+        "inspector_description": "Apache Tomcat is vulnerable to HTTP request/response smuggling attacks. This can allow attackers to bypass security controls, poison caches, and perform unauthorized actions by manipulating HTTP message boundaries.",
+        "inspector_first_observed": "2026-05-08T10:30:00.000Z",
+        "inspector_last_observed": "2026-05-08T10:30:00.000Z",
+        "inspector_exploit_available": "YES",
+        "inspector_fix_available": "YES",
+        "inspector_epss_score": 0.03456,
+        "inspector_cvss": [
+          {
+            "baseScore": 9.1,
+            "scoringVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N",
+            "source": "NVD",
+            "version": "3.1"
+          }
+        ],
+        "inspector_reference_urls": [
+          "https://advisories.gitlab.com/maven/org.apache.tomcat/tomcat/CVE-2026-24880/",
+          "https://tomcat.apache.org/security-9.html"
+        ],
+        "inspector_file_path": "/app/vulnerable-demo-1.0.0.jar/BOOT-INF/lib/tomcat-embed-core-9.0.116.jar"
+      }
+    },
+    {
+      "id": "arn:aws:inspector2:us-east-1:123456789012:finding/cve202553506-013",
+      "scanner": "inspector",
+      "package_manager": "java",
+      "package_name": "org.apache.tomcat.embed:tomcat-embed-core",
+      "current_version": "9.0.116",
+      "fixed_version": "9.0.107",
+      "severity": "high",
+      "cve": [
+        "CVE-2025-53506"
+      ],
+      "manifest_file": "pom.xml",
+      "remediation_type": "dependency",
+      "repository": "vulnerable-demo",
+      "branch": "main",
+      "commit_id": "unknown",
+      "scan_time": "2026-05-11T22:26:15.428166",
+      "metadata": {
+        "inspector_finding_arn": "arn:aws:inspector2:us-east-1:123456789012:finding/cve202553506-013",
+        "inspector_title": "CVE-2025-53506 - org.apache.tomcat.embed:tomcat-embed-core",
+        "inspector_description": "Apache Tomcat Coyote component is vulnerable to Denial of Service attacks through excessive HTTP/2 stream creation. Attackers can exhaust server resources by opening numerous HTTP/2 streams.",
+        "inspector_first_observed": "2026-05-08T10:30:00.000Z",
+        "inspector_last_observed": "2026-05-08T10:30:00.000Z",
+        "inspector_exploit_available": "NO",
+        "inspector_fix_available": "YES",
+        "inspector_epss_score": 0.00189,
+        "inspector_cvss": [
+          {
+            "baseScore": 7.5,
+            "scoringVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+            "source": "NVD",
+            "version": "3.1"
+          }
+        ],
+        "inspector_reference_urls": [
+          "https://github.com/advisories/GHSA-25xr-qj8w-c4vf",
+          "https://tomcat.apache.org/security-9.html"
+        ],
+        "inspector_file_path": "/app/vulnerable-demo-1.0.0.jar/BOOT-INF/lib/tomcat-embed-core-9.0.116.jar"
+      }
+    },
+    {
+      "id": "arn:aws:inspector2:us-east-1:123456789012:finding/cve202632990-014",
+      "scanner": "inspector",
+      "package_manager": "java",
+      "package_name": "org.apache.tomcat.embed:tomcat-embed-core",
+      "current_version": "9.0.116",
+      "fixed_version": "9.0.117",
+      "severity": "low",
+      "cve": [
+        "CVE-2026-32990"
+      ],
+      "manifest_file": "pom.xml",
+      "remediation_type": "dependency",
+      "repository": "vulnerable-demo",
+      "branch": "main",
+      "commit_id": "unknown",
+      "scan_time": "2026-05-11T22:26:15.428175",
+      "metadata": {
+        "inspector_finding_arn": "arn:aws:inspector2:us-east-1:123456789012:finding/cve202632990-014",
+        "inspector_title": "CVE-2026-32990 - org.apache.tomcat.embed:tomcat-embed-core",
+        "inspector_description": "Improper input validation vulnerability in Apache Tomcat due to an incomplete fix of CVE-2025-66614. This may allow attackers to bypass certain security controls through crafted input.",
+        "inspector_first_observed": "2026-05-08T10:30:00.000Z",
+        "inspector_last_observed": "2026-05-08T10:30:00.000Z",
+        "inspector_exploit_available": "NO",
+        "inspector_fix_available": "YES",
+        "inspector_epss_score": 0.00034,
+        "inspector_cvss": [
+          {
+            "baseScore": 3.7,
+            "scoringVector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:L/A:N",
+            "source": "NVD",
+            "version": "3.1"
+          }
+        ],
+        "inspector_reference_urls": [
+          "https://advisories.gitlab.com/maven/org.apache.tomcat/tomcat/CVE-2026-32990/",
+          "https://tomcat.apache.org/security-9.html"
+        ],
+        "inspector_file_path": "/app/vulnerable-demo-1.0.0.jar/BOOT-INF/lib/tomcat-embed-core-9.0.116.jar"
+      }
+    }
+  ],
+  "code_vulnerabilities": []
+}
