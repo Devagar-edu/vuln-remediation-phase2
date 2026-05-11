@@ -1,0 +1,21 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------------< com.demo:vuln-demo-app >-----------------------
+[INFO] Building vuln-demo-app 1.0.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.2.0:clean (default-clean) @ vuln-demo-app ---
+[INFO] 
+[INFO] --- resources:3.4.0:resources (default-resources) @ vuln-demo-app ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory /home/runner/work/vuln-remediation-phase2/vuln-remediation-phase2/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.8.1:compile (default-compile) @ vuln-demo-app ---
+[INFO] No sources to compile
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  0.632 s
+[INFO] Finished at: 2026-05-11T22:46:03Z
+[INFO] ------------------------------------------------------------------------
