@@ -117,19 +117,6 @@ def create_jira_ticket(json_file):
         json_file: Path to JSON file containing scan results
     """
     jira = connect_jira()
-
-    me = jira.myself()
-
-    print("=== AUTH USER ===")
-    print(me)
-    print("=================")
-    
-    
-    print("=== PERMISSIONS ===")
-    print(perms["permissions"]["CREATE_ISSUES"])
-    print("===================")
-    scan = load_scan(json_file)
-
     description = build_summary(scan)
     
     # Get scanner name from metadata
