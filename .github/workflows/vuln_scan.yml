@@ -73,10 +73,14 @@ jobs:
           path: vuln_report.json
 
       - name: Debug secrets
+        env:
+          JIRA_URL: ${{ secrets.JIRA_URL }}
+          JIRA_EMAIL: ${{ secrets.JIRA_EMAIL }}
+          JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
         run: |
            echo "EMAIL LENGTH=${#JIRA_EMAIL}"
            echo "TOKEN LENGTH=${#JIRA_API_TOKEN}"
-           echo "URL LENGETH=${#JIRA_URL}"
+           echo "URL LENGTH=${#JIRA_URL}"
 
       - name: Create Jira Ticket
         if: steps.vuln-check.outputs.found_vulns == 'true'
