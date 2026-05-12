@@ -72,6 +72,11 @@ jobs:
           name: normalized-report
           path: vuln_report.json
 
+      - name: Debug secrets
+        run: |
+           echo "EMAIL LENGTH=${#JIRA_EMAIL}"
+           echo "TOKEN LENGTH=${#JIRA_API_TOKEN}"
+
       - name: Create Jira Ticket
         if: steps.vuln-check.outputs.found_vulns == 'true'
         run: python .github/scripts/create_jira.py vuln_report.json
