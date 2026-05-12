@@ -118,6 +118,8 @@ def create_jira_ticket(json_file):
     """
     jira = connect_jira()
 
+    me = jira.myself()
+
     print("=== AUTH USER ===")
     print(me)
     print("=================")
