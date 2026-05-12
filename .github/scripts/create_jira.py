@@ -15,76 +15,76 @@ def safe_path(user_input):
 
 
 def connect_jira():
-       
-                                                
+    """
+    Connect to Jira using environment variables.
     
-                                                                     
-       
-                                                         
+    Forces API v3 since Jira Cloud permissions are configured for v3.
+    """
+    jira_url = os.environ.get('JIRA_URL', '').rstrip('/')
     
-                                                                        
-                               
-                                                 
+    # Strip any /rest/api/* paths - we'll specify the version explicitly
+    if '/rest/api' in jira_url:
+        jira_url = jira_url.split('/rest/api')[0]
     
-                                                                             
+    # Force API v3 - Jira Cloud uses v3, and permissions are configured there
     return JIRA(
-        server=os.environ.get('JIRA_URL'),
-        basic_auth=(os.environ.get("JIRA_EMAIL"), os.environ.get("JIRA_API_TOKEN"))
-                                         
+        server=jira_url,
+        basic_auth=(os.environ.get("JIRA_EMAIL"), os.environ.get("JIRA_API_TOKEN")),
+        options={'rest_api_version': '3'}
     )
 
 
 def load_scan(json_file):
-       
-                                     
+    """
+    Load scan results from JSON file.
     
-                                                                   
+    Supports both old Snyk format and new normalized schema format.
     
-            
-                                       
-       
+    Returns:
+        Dictionary containing scan data
+    """
     with open(json_file) as f:
         return json.load(f)
 
 
 def build_summary(scan):
-
-                                       
+    """
+    Build summary text for Jira ticket.
     
-                                                                   
+    Supports both old Snyk format and new normalized schema format.
     
-               
-                                                                                                                          
-                                                                                  
+    Old format:
+        - dependency_vulnerabilities: list of objects with "package", "vulnerabilities" list
+        - code_vulnerabilities: list of objects with "rule_id", "occurrences" list
     
-               
-                                                                       
-                                                                 
+    New format:
+        - dependency_vulnerabilities: list of NormalizedFinding objects
+        - code_vulnerabilities: list of NormalizedFinding objects
     
-         
-                                                
+    Args:
+        scan: Dictionary containing scan results
     
-            
-                                                            
-       
-    dep_count = len(scan.get("dependency_vulnerabilities", []))
-    code_count = len(scan.get("code_vulnerabilities", []))
+    Returns:
+        Formatted summary string for Jira ticket description
+    """
+    dep_vulns = scan.get("dependency_vulnerabilities", [])
+    code_vulns = scan.get("code_vulnerabilities", [])
     
-                                                                           
-                         
-                                                    
-                                                                         
-                                                                       
-                                
+    # Detect format by checking structure of first dependency vulnerability
+    is_new_format = False
+    if dep_vulns and isinstance(dep_vulns[0], dict):
+        # Check if it has new format fields (package_name, scanner, etc.)
+        if "package_name" in dep_vulns[0] or "scanner" in dep_vulns[0]:
+            is_new_format = True
     
-                     
-                                                              
-                                  
-                                    
-         
-                                                                 
-                                                                                                      
-                                                                                                                            
+    if is_new_format:
+        # New normalized format: each item is a single finding
+        dep_count = len(dep_vulns)
+        code_count = len(code_vulns)
+    else:
+        # Old format: each item contains multiple vulnerabilities
+        dep_count = sum(len(d.get("vulnerabilities", [])) for d in dep_vulns)
+        code_count = len(code_vulns)  # Code vulns are already individual items in old format
 
     summary = f"""
 Security Scan Report
@@ -107,51 +107,39 @@ AI remediation planner will analyze the attachment and suggest fixes.
 
 
 def create_jira_ticket(json_file):
-
-                                                  
+    """
+    Create Jira ticket for security scan findings.
     
-                                                                   
-                                                         
+    Supports both old Snyk format and new normalized schema format.
+    Includes scanner source in ticket summary and labels.
     
-         
-                                                            
-       
+    Args:
+        json_file: Path to JSON file containing scan results
+    """
     jira = connect_jira()
-
-    me = jira.myself()
-
-    print("=== AUTH USER ===")
-    print(me)
-    print("=================")
-
-    perms = jira.my_permissions(projectKey="SCRUM")
-
-    print("=== PERMISSIONS ===")
-    print(perms["permissions"]["CREATE_ISSUES"])
-    print("===================")
     scan = load_scan(json_file)
 
     description = build_summary(scan)
     
-                                    
-                                                          
+    # Get scanner name from metadata
+    scanner = scan['scan_metadata'].get('scanner', 'snyk')
     
-                                   
-                                      
+    # Build labels based on scanner
+    labels = ["security", "auto-scan"]
     
-                                 
-                                 
-                             
-                                      
-                                  
-                            
+    # Add scanner-specific labels
+    if "snyk" in scanner.lower():
+        labels.append("snyk")
+    if "inspector" in scanner.lower():
+        labels.append("inspector")
+        labels.append("aws")
 
     issue_dict = {
         "project": {"key": PROJECT_KEY},
-        "summary": f"Security Scan Findings - {scan['scan_metadata']['project']}",
+        "summary": f"Security Scan Findings ({scanner}) - {scan['scan_metadata']['project']}",
         "description": description,
         "issuetype": {"name": "Task"},
-        "labels": ["security", "snyk", "auto-scan"]
+        "labels": labels
     }
 
     issue = jira.create_issue(fields=issue_dict)
