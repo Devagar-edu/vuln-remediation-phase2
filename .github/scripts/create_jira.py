@@ -117,6 +117,18 @@ def create_jira_ticket(json_file):
                                                             
        
     jira = connect_jira()
+
+    me = jira.myself()
+
+    print("=== AUTH USER ===")
+    print(me)
+    print("=================")
+
+    perms = jira.my_permissions(projectKey="SCRUM")
+
+    print("=== PERMISSIONS ===")
+    print(perms["permissions"]["CREATE_ISSUES"])
+    print("===================")
     scan = load_scan(json_file)
 
     description = build_summary(scan)
