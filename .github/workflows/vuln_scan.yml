@@ -76,6 +76,7 @@ jobs:
         run: |
            echo "EMAIL LENGTH=${#JIRA_EMAIL}"
            echo "TOKEN LENGTH=${#JIRA_API_TOKEN}"
+           echo "URL LENGETH=${#JIRA_URL}
 
       - name: Create Jira Ticket
         if: steps.vuln-check.outputs.found_vulns == 'true'
